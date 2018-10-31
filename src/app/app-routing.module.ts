@@ -26,7 +26,7 @@ const studentRoute: Routes = [
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/signin',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   { 
