@@ -1,0 +1,142 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 head-dashboard">
+      <h2>
+        <b>
+        กระดานสารสนเทศ<br />
+        ระบบเปิดให้พิมพ์บัตรประจำตัวผู้เข้าสอบระหว่างวันที่ 11 - 14 มกราคม 2561
+        </b>
+      </h2>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <b>ข้อแนะนำเกี่ยวกับการพิมพ์บัตร</b>
+      <ol>
+        <li>เมื่อนักเรียนพิมพ์บัตรประจำตัวผู้เข้าสอบแล้ว ให้ตรวจสอบข้อมูล ห้องสอบ รหัสประจำตัวสอบ แล้วลงลายมือชื่อที่บัตรให้เรียบร้อย</li>
+        <li>นักเรียนต้องนำบัตรนี้มาแสดงกับกรรมการคุมสอบในวันสอบ คู่กับบัตรประจำตัวประชาชน หรือบัตรนักเรียน</li>
+      </ol>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 column-dashboard">
+      <img src="./assets/images/Wordpad-icon.png" />
+      <br />
+      <!-- <button *ngIf="!received" mat-raised-button (click)="gotoInfo()" class="button-dashboard">1. แบบฟอร์มใบสมัคร</button> -->
+      <button *ngIf="received" mat-raised-button (click)="gotoRecived()" class="button-dashboard">1. แบบฟอร์มใบสมัคร</button>
+      <p>
+
+      </p>
+    </div>
+    <div class="col-md-3 column-dashboard">
+      <img src="./assets/images/Actions-document-print-icon.png" />
+      <br />
+      <button mat-raised-button (click)="printApplication()" class="button-dashboard">2. พิมพ์ใบสมัคร</button>
+      <!-- <img src="http://www.barcode-generator.org/phpqrcode/getCode.php?cht=qr&chl=http://www.satit.nu.ac.th/2016/barcode/application.php?token={{ token }}&chs=180x180&choe=UTF-8&chld=L|0"/> -->
+      <p>
+      </p>
+    </div>
+    <div class="col-md-3 column-dashboard">
+      <img src="./assets/images/Actions-document-print-icon.png" />
+      <button mat-raised-button (click)="printBillPayMent()" class="button-dashboard">3. พิมพ์ใบแจ้งชำระเงิน</button>
+      <p>
+      </p>
+    </div>
+    <div class="col-md-3 column-dashboard">
+      <img src="./assets/images/profile-search-icon.png" />
+      <!-- <button *ngIf="!isThereTesterCode" mat-raised-button (click)="createATesterCode()" class="button-green">4. ออกเลขประจำตัวสอบ (ข้อมูลล่าสุด)</button> -->
+      <button *ngIf="isThereTesterCode" mat-raised-button (click)="printCard()" class="button-dashboard">4. พิมพ์บัตรประจำตัวผู้เข้าสอบ</button>
+      <p *ngIf="isThereTesterCode">
+        พิมพ์ด้วยเครื่องพิมพ์สีหรือขาวดำก็ได้
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class=col-md-12>
+      <div style="text-align: center;">
+        <font size="6" color="#ff3300"><b style=""><u>*** ข้อปฎิบัติในการสอบ ***</u></b></font>
+      </div>
+      <div style="text-align: left;"><b><font size="5">ระเบียบการเข้าห้องสอบ</font></b></div>
+      <div style="text-align: left;">
+        <font size="5" style=""><b>&nbsp; &nbsp;</b>1. ไม่มีบัตรประจำตัวสอบ&nbsp;&nbsp;<b>ไม่มีสิทธิ์สอบ</b></font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style=""><b>&nbsp; &nbsp;</b>2. ไม่มีบัตรประจำตัวประชาชน&nbsp; หรือบัตรนักเรียน&nbsp; <b>ไม่มีสิทธิ์สอบ</b></font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style=""><b>&nbsp; &nbsp;</b>3. มาสายเกิน 15 นาที&nbsp;&nbsp;<b>ไม่มีสิทธิ์สอบ</b></font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style=""><b>&nbsp; &nbsp;</b>4.
+          <u style="font-weight: bold;">ห้าม</u>ผู้เข้าสอบนำอุปกรณ์สื่อสาร&nbsp; ไม้บรรทัดคำนวณ เครื่องคิดเลข เครื่องช่วยในการคำนวณ น้ำยาลบคำผิด และนาฬิกาทุกชนิดเข้าห้องสอบ</font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;5.
+          <u style="font-weight: bold;">อนุญาต</u>ให้ผู้เข้าสอบนำเฉพาะ&nbsp; ปากกา&nbsp; ดินสอ 2B ยางลบ&nbsp; และกบเหลาดินสอ&nbsp;&nbsp;<b>เข้าห้องสอบได้เท่านั้น</b></font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style=""><b>&nbsp; &nbsp;</b>6.
+          <u style="font-weight: bold;">ไม่อนุญาต</u>&nbsp;ให้ผู้เข้าสอบนำอุปกรณ์ใส่ดินสอทุกชนิดเข้าห้องสอบ</font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;7.
+          <u style="font-weight: bold;">ไม่อนุญาต</u>&nbsp;ให้ผู้เข้าสอบใส่เสื้อกันหนาวในห้องสอบ</font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;8. ให้ผู้เข้าสอบนั่งสอบจนหมดเวลา</font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;</font>
+        <font color="#ff0000" size="5">*** โรงเรียนไม่รับฝากสิ่งของใดๆ</font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style=""><br></font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style=""><b>อุปกรณ์และหลักฐานที่<u style="">อนุญาต</u>ให้นำเข้าห้องสอบ</b></font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;1. ปากกา</font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;2. ดินสอ 2ฺB&nbsp;</font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;3. ยางลบ</font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;4. กบเหลาดินสอ</font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;5. บัตรประจำตัวสอบ</font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;6. บัตรประชาชน หรือบัตรนักเรียน</font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style=""><br></font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style=""><b>ข้อแนะนำ</b></font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;1. ให้นักเรียนพิมพ์บัตรประจำตัวสอบแล้วลงลายมื่อชื่อที่บัตรให้เรียบร้อย</font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;2. สำรวจตนเองว่ามีบัตรประชาชน หรือบัตรนักเรียนอย่างใดอย่างหนึ่งแล้วหรือยัง หากไม่มีทั้งสองอย่างให้ดำเนินการทำบัตรประชาชน
+          หรือบัตรนักเรียนให้แล้วเสร็จก่อนวันสอบ
+        </font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;3. ให้มาถึงสถานที่สอบก่อนเวลาสอบประมาณ 1 ชั่วโมงเนื่องจากมีผู้สมัครสอบเดินทางมาเป็นจำนวนมากอาจส่งผลให้การจราจรติดขัด</font>
+      </div>
+      <div style="text-align: left;">
+        <font size="5" style="">&nbsp; &nbsp;4. ก่อนส่งบุตรหลานเข้าบริเวณอาคารสอบให้นัดหมายจุดนัดพบหลังสอบเสร็จ เนื่องจากไม่อนุญาตให้นำอุปกรณ์สื่อสารเข้าห้องสอบได้</font>
+      </div>
+      <div><img src="./files/15155708720.jpg" alt="" align="none"></div>
+      <div><br></div>
+      <div><br></div>
+    </div>
+  </div>
+</div>
