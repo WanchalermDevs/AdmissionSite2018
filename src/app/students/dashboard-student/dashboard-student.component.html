@@ -45,7 +45,7 @@
     </div>
     <div class="col-md-3 column-dashboard">
       <img src="./assets/images/profile-search-icon.png" />
-      <!-- <button *ngIf="!isThereTesterCode" mat-raised-button (click)="createATesterCode()" class="button-green">4. ออกเลขประจำตัวสอบ (ข้อมูลล่าสุด)</button> -->
+      <button *ngIf="!isThereTesterCode" mat-raised-button (click)="createATesterCode()" class="button-green">4. ออกเลขประจำตัวสอบ (ข้อมูลล่าสุด)</button>
       <button *ngIf="isThereTesterCode" mat-raised-button (click)="printCard()" class="button-dashboard">4. พิมพ์บัตรประจำตัวผู้เข้าสอบ</button>
       <p *ngIf="isThereTesterCode">
         พิมพ์ด้วยเครื่องพิมพ์สีหรือขาวดำก็ได้

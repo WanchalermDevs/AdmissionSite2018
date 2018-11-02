@@ -130,15 +130,15 @@ export class DashboardStudentComponent implements OnInit {
   }
 
   printApplication() {
-    alert("ระบบไม่อนุญาตให้ดำเนินการพิมพ์ใบใบแล้ว");
-    //window.location.href = "http://www.satit.nu.ac.th/2016/barcode/application.php?token=" + window.sessionStorage.getItem("token");
-    // window.open("http://www.satit.nu.ac.th/2016/barcode/application.php?token=" + window.sessionStorage.getItem("token"), '_blank');
+    // alert("ระบบไม่อนุญาตให้ดำเนินการพิมพ์ใบใบแล้ว");
+    // window.location.href = "http://www.satit.nu.ac.th/2016/barcode/application.php?token=" + window.sessionStorage.getItem("token");
+    window.open("http://www.satit.nu.ac.th/2016/barcode/application.php?token=" + window.sessionStorage.getItem("token"), '_blank');
   }
 
   printBillPayMent() {
-    alert("ระบบไม่อนุญาตให้ดำเนินการพิมพ์ใบแจ้งชำระเงินแล้ว");
+    // alert("ระบบไม่อนุญาตให้ดำเนินการพิมพ์ใบแจ้งชำระเงินแล้ว");
     // window.location.href = "http://www.satit.nu.ac.th/2016/barcode/billpayment.php?token=" + window.sessionStorage.getItem("token");
-    // window.open("http://www.satit.nu.ac.th/2016/barcode/billpayment.php?token=" + window.sessionStorage.getItem("token"), '_blank');
+    window.open("http://www.satit.nu.ac.th/2016/barcode/billpayment.php?token=" + window.sessionStorage.getItem("token"), '_blank');
   }
 
   printCard() {
