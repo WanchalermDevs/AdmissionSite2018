@@ -50,6 +50,7 @@ import { ReactiveFormsModule, FormsModule, FormBuilder } from '@angular/forms';
 import { RESTService } from './service/rest.service';
 import { UserService } from './service/user.service';
 import { IsOnlineGuard } from './guard/is-online.guard';
+import { ApplicationFormComponent } from './students/application-form/application-form.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { IsOnlineGuard } from './guard/is-online.guard';
     RegisterM1DialogComponent,
     DialogOverviewExampleDialog,
     DashboardStudentComponent,
-    UploadImageComponent
+    UploadImageComponent,
+    ApplicationFormComponent
   ],
   imports: [
     BrowserModule,

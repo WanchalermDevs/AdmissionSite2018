@@ -1,0 +1,105 @@
+form {
+    padding: 5px;
+  }
+  button {
+    margin-top: 20px;
+    margin-right: 10px;
+  }
+  .mat-form-field, .mat-select {
+    margin-bottom: 10px;
+  }
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 50%;
+  }
+  .login-row{
+    text-align: center;
+  }
+
+  mat-card-subtitle{
+   font-family: myFont;
+    /* text-align: center; */
+  }
+  mat-option {
+    font-family: myFont;
+  }
+
+  mat-card-title{
+   font-family: myFont;
+    text-align: center;
+  }
+
+  .fullBody{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 99900000;
+    background-color: rgba(43, 43, 43, 0.89);
+    opacity: 0.8;
+  }
+
+.loader {
+    position: absolute;
+    z-index: 99900001;
+    left: 50%;
+    top: 50%;
+    border: 16px solid rgba(201, 197, 197, 0.79); /* Light grey */
+    border-top: 16px solid #E74D00; /* Blue */
+    border-radius: 50%;
+    margin: -75px 0 0 -75px;
+    width: 150px;
+    height: 150px;
+    /*background-image: url("../../../assets/images/NU_Logo.png");*/
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+ .logoNUDForWaite{
+  position: absolute;
+  z-index: 99900002;
+  left: 50%;
+  top: 50%;
+  border-radius: 50%;
+  margin: -65px 0 0 -65px;
+  width: 130px;
+  height: 130px;
+  background-image: url("../../../assets/images/NUD_Logo.png"); 
+  background-size: cover;
+  background-repeat: no-repeat;
+} 
+
+.div-load{
+  display: none;
+}
+#errorMessage{
+  color: red;
+}
+#successMessage{
+  color: green;
+}  
+mat-form-field,
+#btn-submit,
+#btn-cancel {
+    width: 100%;
+}
+
+#btn-submit {
+    margin-bottom: 0.5rem;
+}
+
+#btn-cancel {
+    margin-bottom: 0.5rem;
+}

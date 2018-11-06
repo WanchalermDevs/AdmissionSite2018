@@ -7,6 +7,7 @@ import { IsOnlineGuard } from './guard/is-online.guard';
 import { SignInComponent } from './authentications/sign-in/sign-in.component';
 import { DialogOverviewExampleDialog } from './home/home.component';
 import { HomeComponent } from './home/home.component';
+import { ApplicationFormComponent } from './students/application-form/application-form.component';
 
 const studentRoute: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'signin',
     component: SignInComponent
+  },
+  {
+    path: 'form/:level',
+    component: ApplicationFormComponent
   }
 ];
 

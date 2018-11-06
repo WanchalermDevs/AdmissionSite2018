@@ -1,0 +1,210 @@
+<div class="container">
+  <br />
+  <section>
+    <article>
+      <mat-card>
+        <mat-card-content>
+          <h3 class="primary-color" style="font-family: myFont;text-align: center;font-weight: bold;">ข้อมูลขั้นต้นของผู้สมัครสอบคัดเลือกระดับชั้นมัธยมศึกษาปีที่
+            {{ level }}
+          </h3>
+          <mat-divider></mat-divider>
+          <mat-tab-group #tabGroup [selectedIndex]="tabIndex" (selectedIndexChange)="selected.setValue($event)" dynamicHeight="true" mat-stretch-tabs dynamicHeight>
+            <mat-tab label="ขั้นตอนที่ 1">
+              <div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div mat-dialog-content>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <mat-form-field>
+                            <input matInput #personal_id required [(ngModel)]="data.personal_id" placeholder="เลขบัตรประจำตัวประชาชน"
+                              minlength="13" maxlength="13">
+                            <mat-hint>{{personal_id.value.length}} / 13</mat-hint>
+                            <mat-error>กรุณากรอกเลขประจำตัวประชาชน</mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-8">
+                          <mat-form-field>
+                            <mat-select placeholder="แผนการเรียน" [(ngModel)]="planSelected" required>
+                              <mat-option *ngFor="let p of plan" [value]="p.code">
+                                {{ p.text }}
+                              </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="planControl.hasError('required')">กรุณาเลือกแผนการเรียน</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <mat-form-field>
+                            <mat-select placeholder="คำหน้านาม" [(ngModel)]="prenameSelected" required>
+                              <mat-option *ngFor="let preNmae of prename" [value]="preNmae.value">
+                                {{ preNmae.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="preNmaesControl.hasError('required')">กรุณาเลือกคำหน้านาม</mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                          <mat-form-field [color]="!firstname.valid && !firstname.pristine ? 'warn' : 'primary'">
+                            <input matInput name="firstname" required [(ngModel)]="data.firstname" #firstname
+                              placeholder="ชื่อ">
+                            <mat-error>กรุณากรอกชื่อ</mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                          <mat-form-field [color]="!lastname.valid && !lastname.pristine ? 'warn' : 'primary'">
+                            <input matInput name="lastname" required [(ngModel)]="data.lastname" #lastname placeholder="นามสกุล">
+                            <mat-error>กรุณากรอกนามสกุล</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-4">
+                          <mat-form-field>
+                            <mat-select placeholder="วันที่เกิด" name="date" [(ngModel)]="birthdaySelected" required>
+                              <mat-option *ngFor="let date of birthday" [value]="date.value">
+                                {{ date.viewValue}}
+                              </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="numOfDateControl.hasError('required')">กรุณาเลือกวันที่เกิด</mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                          <mat-form-field>
+                            <mat-select placeholder="เดือนที่เกิด" [(ngModel)]="monthSelected" required>
+                              <mat-option *ngFor="let mount of birhtmonth" [value]="mount.value">
+                                {{ mount.viewValue }}
+                              </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="numOfMountsControl.hasError('required')">กรุณาเลือกเดือนที่เกิด</mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="col-md-4">
+                          <mat-form-field>
+                            <mat-select placeholder="ปีที่เกิด" [(ngModel)]="yearSelected" required>
+                              <mat-option *ngFor="let year of birthyear" [value]="year.value">
+                                {{ year.viewValue }}
+                              </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="numOfYearsControl.hasError('required')">กรุณาเลือกปีที่เกิด</mat-error>
+                          </mat-form-field>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div>
+                <button style="font-family: myFont;font-size:22px;float: right;" mat-raised-button color="primary"
+                  (click)="tabGroup.selectedIndex=1">ถัดไป
+                  <mat-icon>arrow_forward</mat-icon>
+                </button>
+              </div>
+            </mat-tab>
+            <!-- <mat-tab label="ขั้นตอนที่ 2" [disabled]="!regisForm.valid"> -->
+            <mat-tab label="ขั้นตอนที่ 2">
+              <br />
+              <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                  <mat-card>
+                    <mat-card-title>
+                      <h3 style="font-weight:bolder;">ข้อมูลขั้นต้นของผู้สมัคร</h3>
+                    </mat-card-title>
+                    <mat-divider></mat-divider><br />
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h4>แผนการเรียน : <b *ngIf="(planSelected == 1) && (level == 1) " style="font-weight:bold;color:#3498db;font-size: 22px;">แผนการเรียนวิทยาศาสตร์-คณิตศาสตร์
+                            (ภาษาไทย)
+                          </b>
+                          <b *ngIf="(planSelected == 2) && (level == 1) " style="font-weight:bold;color:#3498db;font-size: 22px;">แผนการเรียนวิทยาศาสตร์-คณิตศาสตร์
+                            (ภาษาอังกฤษ)
+                          </b>
+                          <b *ngIf="(planSelected == 1) && (level == 4) " style="font-weight:bold;color:#3498db;font-size: 22px;">แผนการเรียนวิทยาศาสตร์-คณิตศาสตร์
+                          </b>
+                          <b *ngIf="(planSelected == 2) && (level == 4) " style="font-weight:bold;color:#3498db;font-size: 22px;">แผนการเรียนภาษาอังกฤษ-คณิตศาสตร์
+                          </b>
+                        </h4>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <h4>ชื่อ : <b style="font-weight:bold;color:#3498db;font-size: 22px;">
+                            {{ prenameSelected}}{{firstname.value}}</b></h4>
+                      </div>
+                      <div class="col-md-4">
+                        <h4>นามสกุล : <b style="font-weight:bold;color:#3498db;font-size: 22px;">
+                            {{lastname.value}}</b></h4>
+                      </div>
+                      <div class="col-md-4">
+                        <h4>สมัครเข้าศึกษาต่อ : <b style="font-weight:bold;color:#3498db;font-size: 22px;">
+                            ชั้นมัธยมศึกษาปีที่ {{ level }}</b></h4>
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <h4>เลขบัตรประจำตัวประชาชน : <b style="font-weight:bold;color:#3498db;font-size: 22px;">
+                            {{personal_id.value}}</b></h4>
+                      </div>
+                      <div class="col-md-6">
+                        <h4>วัน/เดือน/ปีเกิด : <b style="font-weight:bold;color:#3498db;font-size: 22px;">
+                            {{ birthdaySelected }}/{{ monthSelected }}/{{ yearSelected }}</b></h4>
+                      </div>
+                    </div>
+                  </mat-card>
+                </div>
+                <div class="col-md-1"></div>
+              </div>
+              <div>
+                <button style="font-family: myFont;font-size:22px;float: left;" mat-raised-button color="accent"
+                  (click)="tabGroup.selectedIndex=0">
+                  <mat-icon>arrow_backward</mat-icon> แก้ไข
+                </button>
+                <button id="confirm" style="font-family: myFont;font-size:22px;float: right;" mat-raised-button color="primary"
+                  (click)="confirm()">
+                  <mat-icon>check</mat-icon> ยืนยันการสมัคร
+                </button>
+              </div>
+            </mat-tab>
+            <mat-tab label="ขั้นตอนที่ 3" [disabled]="!confirm">
+              <br />
+              <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+                  <mat-card>
+                    <div style="text-align: center;font-weight: bold;font-size:18px;">
+                      <mat-icon>https</mat-icon>
+                      <p style="font-weight: bold;">
+                        ให้ท่านทำการบันทึกบัญชีผู้ใช้ของท่าน โดยการจดหรือถ่ายรูปไว้
+                        <br />เพื่อใช้ในการเข้าสู่ระบบการสมัครในครั้งต่อไป
+                      </p>
+                    </div>
+                    <mat-divider></mat-divider><br />
+                    <div style="font-family: myFont;font-size:22px;font-weight: bold;">
+                      *ชื่อผู้ใช้ : <label style="color:rgb(0, 110, 255)"> {{ personal_id.value }}</label><br />
+                      <hr>
+                      *รหัสผ่าน : <label style="color:rgb(0, 110, 255)"> {{ birthdaySelected }}{{ monthSelected }}{{
+                        yearSelected }} </label>
+                    </div>
+                    <hr>
+                    <div style=" text-align:center;">
+                      <button style="font-family: myFont;font-size:22px;" mat-raised-button color="primary" (click)="goToMainForm()">
+                        <mat-icon>vpn_key</mat-icon> โปรดคลิกเพื่อดำเนินการสมัครต่อไป
+                      </button>
+                    </div>
+                  </mat-card>
+                </div>
+                <div class="col-3"></div>
+              </div><br />
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+    </article>
+  </section>
+</div>
+<br />
