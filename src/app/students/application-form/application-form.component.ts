@@ -30,7 +30,9 @@ export class ApplicationFormComponent implements OnInit {
   numOfYearsControl = new FormControl('', [Validators.required]);
 
   enableDebugMode = true;
-
+  enableTab1 = false;
+  firstSteper = true;
+  isLinear = true;
   plan_code: any;
   personal_id: string;
   prename = [];
@@ -41,11 +43,11 @@ export class ApplicationFormComponent implements OnInit {
   birthyear = [];
   plan = [];
   level: number;
-  planSelected: any;
-  prenameSelected: any;
-  birthdaySelected: any;
-  monthSelected: any;
-  yearSelected: any;
+  planSelected = 0;
+  prenameSelected = '';
+  birthdaySelected = '';
+  monthSelected = '';
+  yearSelected = '';
   tabIndex = 0;
   data =
     {
@@ -68,14 +70,13 @@ export class ApplicationFormComponent implements OnInit {
   registForm: FormGroup;
 
   confirm(): void {
-
     this.data.level = this.level,
       this.data.prename = this.prenameSelected;
     this.data.birthday = this.birthdaySelected;
     this.data.birhtmonth = this.monthSelected;
     this.data.birthyear = this.yearSelected;
     this.data.plan_code = this.planSelected;
-    this.data.plan = this.planSelected;
+    this.data.plan = this.planSelected.toString();
     this.data.topic = "createNewAccount"
 
     console.log(this.data);
@@ -85,6 +86,7 @@ export class ApplicationFormComponent implements OnInit {
         /*
         * เมื่อการลงชื่อเข้าใช้สำเร็จแล้วให้กำหนด session ของผู้ใช้งานไว้
         */
+       
         window.sessionStorage.setItem("role", response['role']);
         window.sessionStorage.setItem("username", response['username']);
         window.sessionStorage.setItem("token", response['token']);
@@ -93,6 +95,8 @@ export class ApplicationFormComponent implements OnInit {
         window.sessionStorage.setItem("lastname", response['lastname']);
         // this._router.navigateByUrl("/student/info");
         this.tabIndex = 2;
+        this.enableTab1 = false;
+        this.firstSteper = false;
       } else {
         alert("มีบางอย่างพิดลาด!\n " + response['error_message']);
         window.sessionStorage.setItem("role", "");
@@ -105,11 +109,12 @@ export class ApplicationFormComponent implements OnInit {
     });
 
   }
-  goToMainForm(){
+  goToMainForm() {
     this._router.navigateByUrl("/student/info");
   }
 
   ngOnInit() {
+    // this.enableTab1 = true;
     this.route.params.subscribe(params => {
       this.data.level = params['level'];
       this.level = params['level'];
