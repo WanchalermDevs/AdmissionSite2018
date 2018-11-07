@@ -10,7 +10,10 @@
           <mat-divider></mat-divider>
           <mat-tab-group #tabGroup [selectedIndex]="tabIndex" (selectedIndexChange)="selected.setValue($event)"
             dynamicHeight="true" mat-stretch-tabs dynamicHeight>
-            <mat-tab label="ขั้นตอนที่ 1">
+            <mat-tab>
+              <ng-template mat-tab-label style="font-family: myFont;text-align: center;font-weight: bold;">
+                <mat-icon class="example-tab-icon">looks_one</mat-icon>&nbsp; แบบฟอร์มการสมัคร
+              </ng-template>
               <form #regisForm="ngForm">
                 <div>
                   <div class="row">
@@ -65,7 +68,8 @@
                         <div class="row">
                           <div class="col-md-4">
                             <mat-form-field [color]="!birthday.valid && !birthday.pristine ? 'warn' : 'primary'">
-                              <mat-select  name="birthday" placeholder="วันที่เกิด" [(ngModel)]="birthdaySelected" required>
+                              <mat-select name="birthday" placeholder="วันที่เกิด" [(ngModel)]="birthdaySelected"
+                                required>
                                 <mat-option *ngFor="let date of birthday" [value]="date.value">
                                   {{ date.viewValue}}
                                 </mat-option>
@@ -75,7 +79,8 @@
                           </div>
                           <div class="col-md-4">
                             <mat-form-field [color]="!birhtmonth.valid && !birhtmonth.pristine ? 'warn' : 'primary'">
-                              <mat-select name="birhtmonth" placeholder="เดือนที่เกิด" [(ngModel)]="monthSelected" required>
+                              <mat-select name="birhtmonth" placeholder="เดือนที่เกิด" [(ngModel)]="monthSelected"
+                                required>
                                 <mat-option *ngFor="let mount of birhtmonth" [value]="mount.value">
                                   {{ mount.viewValue }}
                                 </mat-option>
@@ -107,7 +112,10 @@
                 </button>
               </div>
             </mat-tab>
-            <mat-tab label="ขั้นตอนที่ 2" [disabled]="!regisForm.valid">
+            <mat-tab [disabled]="!regisForm.valid">
+                <ng-template mat-tab-label style="font-family: myFont;text-align: center;font-weight: bold;">
+                    <mat-icon class="example-tab-icon">looks_two</mat-icon>&nbsp; ยืนยันการสมัคร 
+                  </ng-template>
               <br />
               <div class="row">
                 <div class="col-md-1"></div>
@@ -173,7 +181,10 @@
                 </button>
               </div>
             </mat-tab>
-            <mat-tab label="ขั้นตอนที่ 3" [disabled]="!confirm.click">
+            <mat-tab  [disabled]="!confirm.click">
+                <ng-template mat-tab-label style="font-family: myFont;text-align: center;font-weight: bold;">
+                    <mat-icon class="example-tab-icon">looks_3</mat-icon>&nbsp; เข้าสู่ระบบ 
+                  </ng-template>
               <br />
               <div class="row">
                 <div class="col-3"></div>
