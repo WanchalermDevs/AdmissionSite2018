@@ -33,8 +33,7 @@ export class HomeComponent implements OnInit {
 
   couseM1 = [
     { value: '1', viewValue: 'เลือกแผนวิทยาศาสตร์ - คณิตศาสตร์ (ภาษาไทย)' },
-    { value: '2', viewValue: 'เลือกแผนวิทยาศาสตร์ - คณิตศาสตร์ (ภาษาอังกฤษ)' },
-    { value: '3', viewValue: 'เลือกทั้งสองแผน' }
+    { value: '2', viewValue: 'เลือกแผนวิทยาศาสตร์ - คณิตศาสตร์ (ภาษาอังกฤษ)' }
   ];
 
   couseM4 = [

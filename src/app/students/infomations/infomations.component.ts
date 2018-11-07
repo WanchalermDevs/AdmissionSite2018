@@ -33,7 +33,6 @@ export class InfomationsComponent implements OnInit {
   numOfMounts = NumOfMounts;
   numOfYears = NumOfYears;
   myControl: FormControl = new FormControl();
-
   filteredOptions: Observable<string[]>;
   filteredOptions4: Observable<string[]>;
 
@@ -185,6 +184,8 @@ export class InfomationsComponent implements OnInit {
     setTimeout(function () {
       window.document.getElementById("myPlan").focus();
     }, delayInMilliseconds);
+
+    setInterval(function(){ console.log("Hello"); }, 3000);
   }
   saveData(data) {
     if (this.student['plan_code'] !== undefined) {

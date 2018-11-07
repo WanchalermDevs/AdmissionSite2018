@@ -46,7 +46,7 @@
         </p>
         <p>
           <button *ngIf="!isOnline.canActivate()" mat-raised-button style="font-family: myFont; font-size: 1.4rem; padding-top: 0.2rem; padding-bottom: 0.2rem;"
-            color="primary"  [routerLink]="['/form','1']">สมัคร ม.1 คลิกที่นี่</button>
+            color="primary" (click)="openDialog(1)">สมัคร ม.1 คลิกที่นี่</button>
         </p>
       </mat-card>
     </div>
@@ -68,7 +68,7 @@
         </p>
         <p>
           <button *ngIf="!isOnline.canActivate()" mat-raised-button style="font-family: myFont; font-size: 1.4rem; padding-top: 0.2rem; padding-bottom: 0.2rem;"
-            color="primary" [routerLink]="['/form','4']">สมัคร ม.4 คลิกที่นี่</button>
+            color="primary" (click)="openDialog(4)">สมัคร ม.4 คลิกที่นี่</button>
         </p>
       </mat-card>
     </div>
