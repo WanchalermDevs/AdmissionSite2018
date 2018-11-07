@@ -8,103 +8,106 @@
             {{ level }}
           </h3>
           <mat-divider></mat-divider>
-          <mat-tab-group #tabGroup [selectedIndex]="tabIndex" (selectedIndexChange)="selected.setValue($event)" dynamicHeight="true" mat-stretch-tabs dynamicHeight>
+          <mat-tab-group #tabGroup [selectedIndex]="tabIndex" (selectedIndexChange)="selected.setValue($event)"
+            dynamicHeight="true" mat-stretch-tabs dynamicHeight>
             <mat-tab label="ขั้นตอนที่ 1">
-              <div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <div mat-dialog-content>
-                      <div class="row">
-                        <div class="col-md-4">
-                          <mat-form-field>
-                            <input matInput #personal_id required [(ngModel)]="data.personal_id" placeholder="เลขบัตรประจำตัวประชาชน"
-                              minlength="13" maxlength="13">
-                            <mat-hint>{{personal_id.value.length}} / 13</mat-hint>
-                            <mat-error>กรุณากรอกเลขประจำตัวประชาชน</mat-error>
-                          </mat-form-field>
+              <form #regisForm="ngForm">
+                <div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div mat-dialog-content>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <mat-form-field [color]="!personal_id.valid && !personal_id.pristine ? 'warn' : 'primary'">
+                              <input matInput #personal_id required [(ngModel)]="data.personal_id" placeholder="เลขบัตรประจำตัวประชาชน"
+                                minlength="13" maxlength="13">
+                              <mat-hint>{{personal_id.value.length}} / 13</mat-hint>
+                              <mat-error>กรุณากรอกเลขประจำตัวประชาชน</mat-error>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-8">
+                            <mat-form-field [color]="!plan.valid && !plan.pristine ? 'warn' : 'primary'">
+                              <mat-select name="plan" placeholder="แผนการเรียน" [(ngModel)]="planSelected" required>
+                                <mat-option *ngFor="let p of plan" [value]="p.code">
+                                  {{ p.text }}
+                                </mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="planControl.hasError('required')">กรุณาเลือกแผนการเรียน</mat-error>
+                            </mat-form-field>
+                          </div>
                         </div>
-                        <div class="col-md-8">
-                          <mat-form-field>
-                            <mat-select placeholder="แผนการเรียน" [(ngModel)]="planSelected" required>
-                              <mat-option *ngFor="let p of plan" [value]="p.code">
-                                {{ p.text }}
-                              </mat-option>
-                            </mat-select>
-                            <mat-error *ngIf="planControl.hasError('required')">กรุณาเลือกแผนการเรียน</mat-error>
-                          </mat-form-field>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <mat-form-field [color]="!prename.valid && !prename.pristine ? 'warn' : 'primary'">
+                              <mat-select name="prename" placeholder="คำหน้านาม" [(ngModel)]="prenameSelected" required>
+                                <mat-option *ngFor="let preNmae of prename" [value]="preNmae.value">
+                                  {{ preNmae.viewValue}}
+                                </mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="preNmaesControl.hasError('required')">กรุณาเลือกคำหน้านาม</mat-error>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field [color]="!firstname.valid && !firstname.pristine ? 'warn' : 'primary'">
+                              <input matInput name="firstname" required [(ngModel)]="data.firstname" #firstname
+                                placeholder="ชื่อ">
+                              <mat-error>กรุณากรอกชื่อ</mat-error>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field [color]="!lastname.valid && !lastname.pristine ? 'warn' : 'primary'">
+                              <input matInput name="lastname" required [(ngModel)]="data.lastname" #lastname
+                                placeholder="นามสกุล">
+                              <mat-error>กรุณากรอกนามสกุล</mat-error>
+                            </mat-form-field>
+                          </div>
                         </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4">
-                          <mat-form-field>
-                            <mat-select placeholder="คำหน้านาม" [(ngModel)]="prenameSelected" required>
-                              <mat-option *ngFor="let preNmae of prename" [value]="preNmae.value">
-                                {{ preNmae.viewValue}}
-                              </mat-option>
-                            </mat-select>
-                            <mat-error *ngIf="preNmaesControl.hasError('required')">กรุณาเลือกคำหน้านาม</mat-error>
-                          </mat-form-field>
-                        </div>
-                        <div class="col-md-4">
-                          <mat-form-field [color]="!firstname.valid && !firstname.pristine ? 'warn' : 'primary'">
-                            <input matInput name="firstname" required [(ngModel)]="data.firstname" #firstname
-                              placeholder="ชื่อ">
-                            <mat-error>กรุณากรอกชื่อ</mat-error>
-                          </mat-form-field>
-                        </div>
-                        <div class="col-md-4">
-                          <mat-form-field [color]="!lastname.valid && !lastname.pristine ? 'warn' : 'primary'">
-                            <input matInput name="lastname" required [(ngModel)]="data.lastname" #lastname placeholder="นามสกุล">
-                            <mat-error>กรุณากรอกนามสกุล</mat-error>
-                          </mat-form-field>
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-4">
-                          <mat-form-field>
-                            <mat-select placeholder="วันที่เกิด" name="date" [(ngModel)]="birthdaySelected" required>
-                              <mat-option *ngFor="let date of birthday" [value]="date.value">
-                                {{ date.viewValue}}
-                              </mat-option>
-                            </mat-select>
-                            <mat-error *ngIf="numOfDateControl.hasError('required')">กรุณาเลือกวันที่เกิด</mat-error>
-                          </mat-form-field>
-                        </div>
-                        <div class="col-md-4">
-                          <mat-form-field>
-                            <mat-select placeholder="เดือนที่เกิด" [(ngModel)]="monthSelected" required>
-                              <mat-option *ngFor="let mount of birhtmonth" [value]="mount.value">
-                                {{ mount.viewValue }}
-                              </mat-option>
-                            </mat-select>
-                            <mat-error *ngIf="numOfMountsControl.hasError('required')">กรุณาเลือกเดือนที่เกิด</mat-error>
-                          </mat-form-field>
-                        </div>
-                        <div class="col-md-4">
-                          <mat-form-field>
-                            <mat-select placeholder="ปีที่เกิด" [(ngModel)]="yearSelected" required>
-                              <mat-option *ngFor="let year of birthyear" [value]="year.value">
-                                {{ year.viewValue }}
-                              </mat-option>
-                            </mat-select>
-                            <mat-error *ngIf="numOfYearsControl.hasError('required')">กรุณาเลือกปีที่เกิด</mat-error>
-                          </mat-form-field>
+                        <div class="row">
+                          <div class="col-md-4">
+                            <mat-form-field [color]="!birthday.valid && !birthday.pristine ? 'warn' : 'primary'">
+                              <mat-select  name="birthday" placeholder="วันที่เกิด" [(ngModel)]="birthdaySelected" required>
+                                <mat-option *ngFor="let date of birthday" [value]="date.value">
+                                  {{ date.viewValue}}
+                                </mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="numOfDateControl.hasError('required')">กรุณาเลือกวันที่เกิด</mat-error>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field [color]="!birhtmonth.valid && !birhtmonth.pristine ? 'warn' : 'primary'">
+                              <mat-select name="birhtmonth" placeholder="เดือนที่เกิด" [(ngModel)]="monthSelected" required>
+                                <mat-option *ngFor="let mount of birhtmonth" [value]="mount.value">
+                                  {{ mount.viewValue }}
+                                </mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="numOfMountsControl.hasError('required')">กรุณาเลือกเดือนที่เกิด</mat-error>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-md-4">
+                            <mat-form-field [color]="!birthyear.valid && !birthyear.pristine ? 'warn' : 'primary'">
+                              <mat-select name="birthyear" placeholder="ปีที่เกิด" [(ngModel)]="yearSelected" required>
+                                <mat-option *ngFor="let year of birthyear" [value]="year.value">
+                                  {{ year.viewValue }}
+                                </mat-option>
+                              </mat-select>
+                              <mat-error *ngIf="numOfYearsControl.hasError('required')">กรุณาเลือกปีที่เกิด</mat-error>
+                            </mat-form-field>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
 
-              </div>
+                </div>
+              </form>
               <div>
                 <button style="font-family: myFont;font-size:22px;float: right;" mat-raised-button color="primary"
-                  (click)="tabGroup.selectedIndex=1">ถัดไป
+                  (click)="tabGroup.selectedIndex=1" [disabled]="!regisForm.valid">ถัดไป
                   <mat-icon>arrow_forward</mat-icon>
                 </button>
               </div>
             </mat-tab>
-            <!-- <mat-tab label="ขั้นตอนที่ 2" [disabled]="!regisForm.valid"> -->
-            <mat-tab label="ขั้นตอนที่ 2">
+            <mat-tab label="ขั้นตอนที่ 2" [disabled]="!regisForm.valid">
               <br />
               <div class="row">
                 <div class="col-md-1"></div>
@@ -170,7 +173,7 @@
                 </button>
               </div>
             </mat-tab>
-            <mat-tab label="ขั้นตอนที่ 3" [disabled]="!confirm">
+            <mat-tab label="ขั้นตอนที่ 3" [disabled]="!confirm.click">
               <br />
               <div class="row">
                 <div class="col-3"></div>

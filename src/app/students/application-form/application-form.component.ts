@@ -92,7 +92,7 @@ export class ApplicationFormComponent implements OnInit {
         window.sessionStorage.setItem("firstname", response['firstname']);
         window.sessionStorage.setItem("lastname", response['lastname']);
         // this._router.navigateByUrl("/student/info");
-        this.tabIndex++;
+        this.tabIndex = 2;
       } else {
         alert("มีบางอย่างพิดลาด!\n " + response['error_message']);
         window.sessionStorage.setItem("role", "");
