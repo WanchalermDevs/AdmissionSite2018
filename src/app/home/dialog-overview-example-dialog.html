@@ -4,11 +4,9 @@
     #btn-cancel {
         width: 100%;
     }
-
     #btn-submit {
         margin-bottom: 0.5rem;
     }
-
     #btn-cancel {
         margin-bottom: 0.5rem;
     }
@@ -26,6 +24,7 @@
                     <mat-form-field class="example-full-width">
                         <input #personal_id matInput required placeholder="เลขบัตรประจำตัวประชาชน" [(ngModel)]="data.personal_id"
                             minlength="13" maxlength="13">
+                            <mat-hint>{{personal_id.value.length}} / 13</mat-hint>
                         <mat-error>กรุณากรอกเลขประจำตัวประชาชน</mat-error>
                     </mat-form-field>
                 </div>
