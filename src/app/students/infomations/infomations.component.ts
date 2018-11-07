@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import 'rxjs/add/operator/map';
 import { Career, CouseM1, CouseM4, Income, NumOfDate, NumOfMounts, NumOfYears, PreNmaes, StudyStatusM1, StudyStatusM4 } from '../../../environments/formItem';
-import { District, Province} from '../../../environments/province';
+import { District, Province } from '../../../environments/province';
 
 @Component({
   selector: 'app-infomations',
@@ -184,9 +184,30 @@ export class InfomationsComponent implements OnInit {
     setTimeout(function () {
       window.document.getElementById("myPlan").focus();
     }, delayInMilliseconds);
-
-    setInterval(function(){ console.log("Hello"); }, 3000);
+    this.checkImageUploaded();
   }
+
+  checkImageUploaded(){
+    console.log("Hello");
+    const preParam = {
+      topic: "getAccountData",
+      username: window.sessionStorage.getItem("username"),
+      token: window.sessionStorage.getItem("token"),
+      role: window.sessionStorage.getItem("role")
+    };
+    this.rest.getAccountData(preParam).then(response => {
+      if (this.student['isupload_image'] == 1) {
+        this.isUploadImage = true;
+      } else {
+        this.isUploadImage = false;
+        
+        setTimeout(function () {
+          this.checkImageUploaded();
+        }, 3000);
+      }
+    });
+  }
+
   saveData(data) {
     if (this.student['plan_code'] !== undefined) {
       this.student['topic'] = "saveAccountData";
@@ -234,7 +255,7 @@ export class InfomationsComponent implements OnInit {
       }
     });
 
-    for(var d in this.prvs){
+    for (var d in this.prvs) {
       this.prvOptions.push(this.prvs[d]['viewValue']);
     }
 
@@ -242,7 +263,7 @@ export class InfomationsComponent implements OnInit {
       .startWith(null)
       .map(val => val ? this.filter(val) : this.options.slice());
 
-      this.filteredOptions4 = this.myControl.valueChanges
+    this.filteredOptions4 = this.myControl.valueChanges
       .startWith(null)
       .map(val => val ? this.filter4(val) : this.prvOptions.slice());
     this.firstFormGroup = this._formBuilder.group({
@@ -260,7 +281,7 @@ export class InfomationsComponent implements OnInit {
     div_load.innerHTML = "Hello";
 
   }
-  
+
   setApms(_prvCode) {
     // console.log(_prvCode);
     this.listApms = [];
