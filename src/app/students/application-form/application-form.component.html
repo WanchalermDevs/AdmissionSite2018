@@ -215,8 +215,8 @@
               {{ level }}
             </h3>
             <mat-divider></mat-divider>
-          <mat-horizontal-stepper [linear]="isLinear" #stepper>
-            <mat-step [editable]="firstSteper" [stepControl]="firstFormGroup">
+          <mat-horizontal-stepper linear  #stepper>
+            <mat-step [editable]="firstSteper" [stepControl]="firstFormGroup" errorMessage="กรอกแบบฟอร์มไม่สมบูรณ์">
               <ng-template matStepLabel>แบบฟอร์มการสมัครขั้นต้น</ng-template>
               <div class="row">
                 <div class="col-md-12">
