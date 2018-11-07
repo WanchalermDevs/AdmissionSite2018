@@ -22,13 +22,13 @@ export class HomeComponent implements OnInit {
   enableDebugMode = true;
 
   personal_id: string;
-  prename: string;
+  prename = "";
   firstname: string;
   lastname: string;
-  birthday: string;
-  birhtmonth: string;
-  birthyear: string;
-  plan_code: string;
+  birthday = "";
+  birhtmonth= "";
+  birthyear= "";
+  plan_code = 0;
   plan = [];
 
   couseM1 = [

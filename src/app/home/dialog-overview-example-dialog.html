@@ -24,7 +24,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <mat-form-field class="example-full-width">
-                        <input matInput required placeholder="เลขบัตรประจำตัวประชาชน" [(ngModel)]="data.personal_id">
+                        <input #personal_id matInput required placeholder="เลขบัตรประจำตัวประชาชน" [(ngModel)]="data.personal_id"
+                            minlength="13" maxlength="13">
                         <mat-error>กรุณากรอกเลขประจำตัวประชาชน</mat-error>
                     </mat-form-field>
                 </div>
@@ -43,54 +44,60 @@
             <div class="row">
                 <div class="col-md-4">
                     <mat-form-field>
-                        <mat-select [(ngModel)]="data.prename" placeholder="คำหน้านาม">
+                        <mat-select [(ngModel)]="data.prename" required placeholder="คำหน้านาม">
                             <mat-option *ngFor="let preNmae of preNmaes" style="font-family: myFont; font-size: 1.2rem;"
                                 [value]="preNmae.value">
                                 {{ preNmae.viewValue }}
                             </mat-option>
                         </mat-select>
+                        <mat-error>กรุณาเลือกคำหน้านาม</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-md-4">
                     <mat-form-field class="example-full-width">
-                        <input [(ngModel)]="data.firstname" matInput placeholder="ชื่อ" value="">
+                        <input #firstname [(ngModel)]="data.firstname" matInput placeholder="ชื่อ" value="" required>
+                        <mat-error>กรุณากรอกชื่อ</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-md-4">
                     <mat-form-field class="example-full-width">
-                        <input [(ngModel)]="data.lastname" matInput placeholder="นามสกุล" value="">
+                        <input #lastname [(ngModel)]="data.lastname" matInput placeholder="นามสกุล" value="" required>
+                        <mat-error>กรุณากรอกนามสกุล</mat-error>
                     </mat-form-field>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     <mat-form-field>
-                        <mat-select [(ngModel)]="data.birthday" placeholder="วันที่เกิด">
+                        <mat-select [(ngModel)]="data.birthday" required placeholder="วันที่เกิด">
                             <mat-option *ngFor="let date of numOfDate" style="font-family: myFont; font-size: 1.2rem;"
                                 [value]="date.value">
                                 {{ date.viewValue }}
                             </mat-option>
                         </mat-select>
+                        <mat-error>กรุณาเลือกวันเกิด</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-md-4">
                     <mat-form-field>
-                        <mat-select [(ngModel)]="data.birhtmonth" placeholder="เดือนที่เกิด">
+                        <mat-select [(ngModel)]="data.birhtmonth" required placeholder="เดือนที่เกิด">
                             <mat-option *ngFor="let mount of numOfMounts" style="font-family: myFont; font-size: 1.2rem;"
                                 [value]="mount.value">
                                 {{ mount.viewValue }}
                             </mat-option>
                         </mat-select>
+                        <mat-error>กรุณาเลือกเดือนเกิด</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-md-4">
                     <mat-form-field>
-                        <mat-select [(ngModel)]="data.birthyear" placeholder="ปีที่เกิด">
+                        <mat-select [(ngModel)]="data.birthyear" required placeholder="ปีที่เกิด">
                             <mat-option *ngFor="let year of numOfYears" style="font-family: myFont; font-size: 1.2rem;"
                                 [value]="year.value">
                                 {{ year.viewValue }}
                             </mat-option>
                         </mat-select>
+                        <mat-error>กรุณาเลือกปีเกิด</mat-error>
                     </mat-form-field>
                 </div>
             </div>
@@ -107,10 +114,18 @@
         </div>
         <div mat-dialog-actions>
             <button mat-raised-button></button>
-            <button mat-raised-button style="font-family: myFont; padding-top: 0.2rem; padding-bottom: 0.2rem; font-size: 1.4rem;" id="btn-submit" [mat-dialog-close]="data"
-                color="primary" >ฉันยืนยันว่าข้อมูลเหล่านี้ถูกต้องแล้ว และขอดำเนินการสมัครต่อไป</button>
-            <button mat-raised-button style="font-family: myFont; padding-top: 0.2rem; padding-bottom: 0.2rem; font-size: 1.4rem;" id="btn-cancel" (click)="onNoClick()"
-                tabindex="-1">ยกเลิก</button>
+            <button mat-raised-button style="font-family: myFont; padding-top: 0.2rem; padding-bottom: 0.2rem; font-size: 1.4rem;"
+                id="btn-submit" [mat-dialog-close]="data" color="primary" disabled *ngIf="((personal_id.value == '' ) 
+                || (firstname.value == '' ) || (lastname.value == '' ) || (data.plan_code  == 0 ) || (data.prename == '')
+                || (data.birthday == '')|| (data.birhtmonth == '')|| (data.birthyear == ''))">ฉันยืนยันว่าข้อมูลเหล่านี้ถูกต้องแล้ว
+                และขอดำเนินการสมัครต่อไป</button>
+            <button mat-raised-button style="font-family: myFont; padding-top: 0.2rem; padding-bottom: 0.2rem; font-size: 1.4rem;"
+                id="btn-submit" [mat-dialog-close]="data" color="primary" *ngIf="!((personal_id.value == '' ) 
+                || (data.plan_code == 0 ) || (firstname.value == '' ) || (lastname.value == '' ) || (data.prename == '')
+                || (data.birthday == '')|| (data.birhtmonth == '')|| (data.birthyear == ''))">ฉันยืนยันว่าข้อมูลเหล่านี้ถูกต้องแล้ว
+                และขอดำเนินการสมัครต่อไป</button>
+            <button mat-raised-button style="font-family: myFont; padding-top: 0.2rem; padding-bottom: 0.2rem; font-size: 1.4rem;"
+                id="btn-cancel" (click)="onNoClick()" tabindex="-1">ยกเลิก</button>
         </div>
     </div>
 </div>
