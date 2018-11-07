@@ -107,9 +107,10 @@ export class ApplicationFormComponent implements OnInit {
         window.sessionStorage.setItem("lastname", "");
       }
     });
-
   }
+
   goToMainForm() {
+    console.log('to to main Form');
     this._router.navigateByUrl("/student/info");
   }
 

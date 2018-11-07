@@ -4,10 +4,10 @@
     <div class="starter-template">
       <!-- <img src="./assets/images/NU_Logo.png" id="logo-nu" /> -->
       <h2>
-        <b>ระบบรับสมัครนักเรียนด้วยตนเอง</b>
+        <b>ระบบรับสมัครนักเรียนเข้าศึกษาต่อปีการศึกษา 2562</b>
       </h2>
       <h4>
-        <b>6 - 7 มกราคม 2561</b>
+        <b>7 พฤศจิกายน - 23 ธันวาคม 2561</b>
       </h4>
     </div>
     <hr class="head-hr" />
@@ -36,7 +36,7 @@
       <mat-card>
         <!-- <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"> -->
         <h4><b>แผนการเรียนมัธยมศึกษาปีที่ 1</b></h4>
-        <p>โรงเรียนมัธยมสาธิตมหาวิทยาลัยนเรศวรเปิดรับสมัครนักเรียนในระดับชั้นมัธยมศึกษาปีที่ 1 ประจำปีการศึกษา 2561 มี 2 แผนการเรียน ได้แก่</p>
+        <p>โรงเรียนมัธยมสาธิตมหาวิทยาลัยนเรศวรเปิดรับสมัครนักเรียนในระดับชั้นมัธยมศึกษาปีที่ 1 ประจำปีการศึกษา 2562 มี 2 แผนการเรียน ได้แก่</p>
         <ol>
           <li>แผนการเรียนวิทยาศาสตร์-คณิตศาสตร์ (ภาษาไทย)</li>
           <li>แผนการเรียนวิทยาศาสตร์-คณิตศาสตร์ (ภาษาอังกฤษ)</li>
@@ -46,7 +46,7 @@
         </p>
         <p>
           <button *ngIf="!isOnline.canActivate()" mat-raised-button style="font-family: myFont; font-size: 1.4rem; padding-top: 0.2rem; padding-bottom: 0.2rem;"
-            color="primary"  [routerLink]="['/form','1']">สมัคร ม.1 คลิกที่นี่</button>
+            color="primary" (click)="openDialog(1)">สมัคร ม.1 คลิกที่นี่</button>
         </p>
       </mat-card>
     </div>
@@ -55,7 +55,7 @@
         <!-- <img class="rounded-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140"> -->
         <h4><b>แผนการเรียนมัธยมศึกษาปีที่ 4</b></h4>
         <p>
-          โรงเรียนมัธยมสาธิตมหาวิทยาลัยนเรศวรเปิดรับสมัครนักเรียนในระดับชั้นมัธยมศึกษาปีที่ 4 ประจำปีการศึกษา 2561 มี 2 แผนการเรียน
+          โรงเรียนมัธยมสาธิตมหาวิทยาลัยนเรศวรเปิดรับสมัครนักเรียนในระดับชั้นมัธยมศึกษาปีที่ 4 ประจำปีการศึกษา 2562 มี 2 แผนการเรียน
           ได้แก่
         </p>
         <ol>
@@ -68,7 +68,7 @@
         </p>
         <p>
           <button *ngIf="!isOnline.canActivate()" mat-raised-button style="font-family: myFont; font-size: 1.4rem; padding-top: 0.2rem; padding-bottom: 0.2rem;"
-            color="primary" [routerLink]="['/form','4']">สมัคร ม.4 คลิกที่นี่</button>
+            color="primary" (click)="openDialog(4)">สมัคร ม.4 คลิกที่นี่</button>
         </p>
       </mat-card>
     </div>
